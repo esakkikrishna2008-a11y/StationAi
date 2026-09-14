@@ -6,7 +6,9 @@ import { calculateExpiryStatus, getDaysRemaining, getExpiryText } from '../utils
 import { Filter, Search, Package, AlertTriangle, XCircle, PackageSearch, Plus, Timer, Ban, ArrowUpDown } from 'lucide-react';
 import ProductModal from '../components/ProductModal';
 import LoadStockModal from '../components/LoadStockModal';
+
 import { getCategoryEmoji } from '../components/Layout';
+
 
 export default function Inventory() {
     const { inventory, computeActiveStock } = useStock();
@@ -155,6 +157,7 @@ export default function Inventory() {
             </div>
 
             {/* STATS */}
+
             <div className="stats-grid mb-4">
                 <div className="card stat-card">
                     <div className="stat-icon blue"><Package size={20} /></div>
@@ -171,6 +174,32 @@ export default function Inventory() {
                 <div className="card stat-card">
                     <div className="stat-icon red"><XCircle size={20} /></div>
                     <div className="stat-info"><h3>Out of Stock</h3><p>{metricsData.outOfStock}</p></div>
+
+            <div className="stats-grid mb-4" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '12px' }}>
+                <div className="card stat-card" style={{ padding: '14px' }}>
+                    <div className="stat-icon blue" style={{ width: 36, height: 36 }}><Package size={18} /></div>
+                    <div className="stat-info"><h3 style={{ fontSize: '0.7rem' }}>Total</h3><p style={{ fontSize: '1.2rem' }}>{total}</p></div>
+                </div>
+                <div className="card stat-card" style={{ padding: '14px' }}>
+                    <div className="stat-icon green" style={{ width: 36, height: 36 }}><Package size={18} /></div>
+                    <div className="stat-info"><h3 style={{ fontSize: '0.7rem' }}>In Stock</h3><p style={{ fontSize: '1.2rem' }}>{metricsData.available}</p></div>
+                </div>
+                <div className="card stat-card" style={{ padding: '14px' }}>
+                    <div className="stat-icon orange" style={{ width: 36, height: 36 }}><AlertTriangle size={18} /></div>
+                    <div className="stat-info"><h3 style={{ fontSize: '0.7rem' }}>Low Stock</h3><p style={{ fontSize: '1.2rem' }}>{metricsData.lowStock}</p></div>
+                </div>
+                <div className="card stat-card" style={{ padding: '14px' }}>
+                    <div className="stat-icon red" style={{ width: 36, height: 36 }}><XCircle size={18} /></div>
+                    <div className="stat-info"><h3 style={{ fontSize: '0.7rem' }}>Out of Stock</h3><p style={{ fontSize: '1.2rem' }}>{metricsData.outOfStock}</p></div>
+                </div>
+                <div className="card stat-card" style={{ padding: '14px' }}>
+                    <div className="stat-icon orange" style={{ width: 36, height: 36 }}><Timer size={18} /></div>
+                    <div className="stat-info"><h3 style={{ fontSize: '0.7rem' }}>Expiring</h3><p style={{ fontSize: '1.2rem' }}>{metricsData.expiringSoon}</p></div>
+                </div>
+                <div className="card stat-card" style={{ padding: '14px' }}>
+                    <div className="stat-icon red" style={{ width: 36, height: 36 }}><Ban size={18} /></div>
+                    <div className="stat-info"><h3 style={{ fontSize: '0.7rem' }}>Expired</h3><p style={{ fontSize: '1.2rem' }}>{metricsData.expired}</p></div>
+
                 </div>
             </div>
 
@@ -272,6 +301,11 @@ export default function Inventory() {
                                             <span style={{ display: item.image ? 'none' : 'block', fontSize: '1.6rem' }}>
                                                 {getCategoryEmoji(item.category)}
                                             </span>
+
+                                            <div className="fallback-img" style={{ display: item.image ? 'none' : 'flex', fontSize: '1rem' }}>
+                                                <PackageSearch size={20} />
+                                            </div>
+
                                         </div>
                                     </td>
                                     <td>
@@ -384,4 +418,4 @@ export default function Inventory() {
             )}
         </div>
     );
-}
+}   

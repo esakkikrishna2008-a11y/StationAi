@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Search, Package, AlertTriangle, XCircle, Clock, Eye, Activity, MapPin, PackageSearch, PackageCheck, Timer, Ban, DollarSign } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect, useMemo } from 'react';
@@ -14,22 +13,11 @@ function getGreeting() {
     if (h < 17) return 'Good afternoon';
     return 'Good evening';
 }
-=======
-import { Search, Package, AlertTriangle, XCircle, Clock, Eye, Activity, MapPin, PackageSearch, PackageCheck, Timer, Ban } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { useState, useEffect, useMemo } from 'react';
-import { useStock } from '../context/StockContext';
-import { calculateStatus, shelves } from '../data';
-import { calculateExpiryStatus, getDaysRemaining, getExpiryText } from '../utils';
->>>>>>> origin/main
 
 export default function Dashboard() {
     const navigate = useNavigate();
     const { inventory, activities } = useStock();
-<<<<<<< HEAD
     const { user } = useAuth();
-=======
->>>>>>> origin/main
     const [recentSearches, setRecentSearches] = useState([]);
     const [fastSearchQuery, setFastSearchQuery] = useState('');
 
@@ -42,20 +30,13 @@ export default function Dashboard() {
 
     // Compute Metrics dynamically
     const metrics = useMemo(() => {
-<<<<<<< HEAD
         const m = { total: inventory.length, available: 0, lowStock: 0, outOfStock: 0, expiringSoon: 0, expired: 0, totalValue: 0 };
-=======
-        const m = { total: inventory.length, available: 0, lowStock: 0, outOfStock: 0, expiringSoon: 0, expired: 0 };
->>>>>>> origin/main
         inventory.forEach(item => {
             const status = calculateStatus(item.stock, item.reorderLevel);
             if (status === 'In Stock') m.available++;
             else if (status === 'Low Stock') m.lowStock++;
             else if (status === 'Out of Stock') m.outOfStock++;
-<<<<<<< HEAD
             m.totalValue += item.stock * item.price;
-=======
->>>>>>> origin/main
 
             if (item.expiryTracking && item.batches) {
                 item.batches.forEach(b => {
@@ -169,26 +150,16 @@ export default function Dashboard() {
             {/* HEADER */}
             <div className="page-header flex-between mb-4">
                 <div>
-<<<<<<< HEAD
                     <h2>{getGreeting()}, {user?.name?.split(' ')[0] || 'Admin'} 👋</h2>
                     <p>Here is your inventory overview for today.</p>
-=======
-                    <h2>Dashboard Overview</h2>
-                    <p>StationAI – AI-Powered Stationery Item-Finding Assistant</p>
->>>>>>> origin/main
                 </div>
                 <button className="btn btn-primary" onClick={() => navigate('/find')}>
                     <Search size={18} /> Find an Item
                 </button>
             </div>
 
-<<<<<<< HEAD
             {/* KPI GRID – 4 columns */}
             <div className="dash-grid-4 mb-4">
-=======
-            {/* KPI GRID – 6 cards */}
-            <div className="dash-grid-6 mb-4">
->>>>>>> origin/main
                 <div className="card kpi-card">
                     <div className="kpi-icon blue"><Package size={24} /></div>
                     <div className="kpi-content">
@@ -200,11 +171,7 @@ export default function Dashboard() {
                 <div className="card kpi-card">
                     <div className="kpi-icon green"><PackageCheck size={24} /></div>
                     <div className="kpi-content">
-<<<<<<< HEAD
                         <p className="kpi-label">In Stock</p>
-=======
-                        <p className="kpi-label">Available</p>
->>>>>>> origin/main
                         <h3 className="kpi-value">{metrics.available}</h3>
                         <p className="kpi-subtext">{healthyPercentage}% healthy</p>
                     </div>
@@ -214,11 +181,7 @@ export default function Dashboard() {
                     <div className="kpi-content">
                         <p className="kpi-label">Low Stock</p>
                         <h3 className="kpi-value">{metrics.lowStock}</h3>
-<<<<<<< HEAD
                         <p className="kpi-subtext">Needs reorder</p>
-=======
-                        <p className="kpi-subtext">Needs attention</p>
->>>>>>> origin/main
                     </div>
                 </div>
                 <div className="card kpi-card">
@@ -229,22 +192,15 @@ export default function Dashboard() {
                         <p className="kpi-subtext">Restock needed</p>
                     </div>
                 </div>
-<<<<<<< HEAD
             </div>
 
             <div className="dash-grid-4 mb-4">
-=======
->>>>>>> origin/main
                 <div className="card kpi-card">
                     <div className="kpi-icon orange"><Timer size={24} /></div>
                     <div className="kpi-content">
                         <p className="kpi-label">Expiring Soon</p>
                         <h3 className="kpi-value">{metrics.expiringSoon}</h3>
-<<<<<<< HEAD
                         <p className="kpi-subtext">Within 30 days</p>
-=======
-                        <p className="kpi-subtext">Needs review</p>
->>>>>>> origin/main
                     </div>
                 </div>
                 <div className="card kpi-card">
@@ -255,7 +211,6 @@ export default function Dashboard() {
                         <p className="kpi-subtext">Action needed</p>
                     </div>
                 </div>
-<<<<<<< HEAD
                 <div className="card kpi-card" style={{ gridColumn: 'span 2' }}>
                     <div className="kpi-icon purple"><DollarSign size={24} /></div>
                     <div className="kpi-content">
@@ -264,8 +219,6 @@ export default function Dashboard() {
                         <p className="kpi-subtext">Based on current stock × price</p>
                     </div>
                 </div>
-=======
->>>>>>> origin/main
             </div>
 
             {/* SEARCH BAR */}
@@ -410,7 +363,6 @@ export default function Dashboard() {
                 <div className="card">
                     <h3 className="dash-title mb-4"><Eye size={18} style={{ marginRight: 8, display: 'inline', verticalAlign: 'text-bottom', color: 'var(--text-muted)' }} /> Recently Viewed</h3>
                     <div className="recently-viewed-grid">
-<<<<<<< HEAD
                         {inventory.slice(0, 6).map(p => (
                             <div key={p.id} className="small-product-card" onClick={() => navigate('/inventory')}>
                                 <div className="s-img">
@@ -420,14 +372,6 @@ export default function Dashboard() {
                                         />
                                     ) : null}
                                     <span style={{ display: p.image ? 'none' : 'block' }}>{getCategoryEmoji(p.category)}</span>
-=======
-                        {inventory.slice(0, 3).map(p => (
-                            <div key={p.id} className="small-product-card" onClick={() => navigate('/inventory')}>
-                                <div className="s-img">
-                                    {p.image ? (
-                                        <img src={p.image} alt={p.name} onError={(e) => e.target.style.display = 'none'} />
-                                    ) : <PackageSearch size={24} style={{ opacity: 0.5 }} />}
->>>>>>> origin/main
                                 </div>
                                 <div className="s-info">
                                     <strong>{p.name}</strong>

@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-=======
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
->>>>>>> origin/main
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import FindItem from './pages/FindItem';
 import Inventory from './pages/Inventory';
 import Architecture from './pages/Architecture';
-<<<<<<< HEAD
 import ExpiryAlerts from './pages/ExpiryAlerts';
 import Settings from './pages/Settings';
 import Profile from './pages/Profile';
@@ -18,14 +13,10 @@ import ForgotPassword from './pages/ForgotPassword';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { StockProvider } from './context/StockContext';
 import { AuthProvider } from './context/AuthContext';
-=======
-import { StockProvider } from './context/StockContext';
->>>>>>> origin/main
 import './index.css';
 
 function App() {
   return (
-<<<<<<< HEAD
     <AuthProvider>
       <StockProvider>
         <BrowserRouter>
@@ -59,20 +50,6 @@ function App() {
         </BrowserRouter>
       </StockProvider>
     </AuthProvider>
-=======
-    <StockProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="find" element={<FindItem />} />
-            <Route path="inventory" element={<Inventory />} />
-            <Route path="architecture" element={<Architecture />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </StockProvider>
->>>>>>> origin/main
   );
 }
 

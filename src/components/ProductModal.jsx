@@ -3,10 +3,12 @@ import { calculateStatus } from '../data';
 import { useStock } from '../context/StockContext';
 import { calculateExpiryStatus, getDaysRemaining, getExpiryText } from '../utils';
 
-export default function ProductModal({ product, onClose, onLoadStock }) {
-    const { updateStock, computeActiveStock } = useStock();
+export default function ProductModal({ product: initialProduct, onClose, onLoadStock }) {
+    const { updateStock, computeActiveStock, inventory } = useStock();
 
-    if (!product) return null;
+    if (!initialProduct) return null;
+
+    const product = inventory?.find(i => i.id === initialProduct.id) || initialProduct;
 
     const status = calculateStatus(product.stock, product.reorderLevel);
 

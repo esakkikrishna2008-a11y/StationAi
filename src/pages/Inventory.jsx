@@ -157,24 +157,6 @@ export default function Inventory() {
             </div>
 
             {/* STATS */}
-
-            <div className="stats-grid mb-4">
-                <div className="card stat-card">
-                    <div className="stat-icon blue"><Package size={20} /></div>
-                    <div className="stat-info"><h3>Total</h3><p>{total}</p></div>
-                </div>
-                <div className="card stat-card">
-                    <div className="stat-icon green"><Package size={20} /></div>
-                    <div className="stat-info"><h3>In Stock</h3><p>{metricsData.available}</p></div>
-                </div>
-                <div className="card stat-card">
-                    <div className="stat-icon orange"><AlertTriangle size={20} /></div>
-                    <div className="stat-info"><h3>Low Stock</h3><p>{metricsData.lowStock}</p></div>
-                </div>
-                <div className="card stat-card">
-                    <div className="stat-icon red"><XCircle size={20} /></div>
-                    <div className="stat-info"><h3>Out of Stock</h3><p>{metricsData.outOfStock}</p></div>
-
             <div className="stats-grid mb-4" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '12px' }}>
                 <div className="card stat-card" style={{ padding: '14px' }}>
                     <div className="stat-icon blue" style={{ width: 36, height: 36 }}><Package size={18} /></div>
@@ -199,7 +181,6 @@ export default function Inventory() {
                 <div className="card stat-card" style={{ padding: '14px' }}>
                     <div className="stat-icon red" style={{ width: 36, height: 36 }}><Ban size={18} /></div>
                     <div className="stat-info"><h3 style={{ fontSize: '0.7rem' }}>Expired</h3><p style={{ fontSize: '1.2rem' }}>{metricsData.expired}</p></div>
-
                 </div>
             </div>
 

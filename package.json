@@ -4,6 +4,9 @@
   "description": "StationAI - AI-Powered Stationery Item-Finding and Inventory Management System",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "concurrently -n \"SERVER,CLIENT\" -c \"cyan,magenta\" \"npm run server\" \"npm run client\"",
     "start": "npm run server",

@@ -1,0 +1,29 @@
+{
+  "name": "stationai-root",
+  "version": "1.0.0",
+  "description": "StationAI - AI-Powered Stationery Item-Finding and Inventory Management System",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"cyan,magenta\" \"npm run server\" \"npm run client\"",
+    "start": "npm run server",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "seed": "npm run seed --prefix server",
+    "build": "npm run build --prefix client",
+    "vercel-build": "npm run build --prefix client"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.3.1",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.16.3",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}
